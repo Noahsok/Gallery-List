@@ -1,0 +1,22 @@
+{
+  "name": "gallery-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "gallery-list"
+  },
+  "author": "Noah Sokoloff <noahsokoloffinfo@gmail.com> (http://noahsokoloffstudio.com/)",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "1.0.1"
+  },
+  "dependencies": {
+    "csv": "^1.1.1"
+  },
+
+}
