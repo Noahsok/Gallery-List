@@ -29,7 +29,7 @@ function createGalleryListFromLoop(galleryRows) {
 function getGalleryName(galleryList) {
   const names = [];
   for (let gallery of galleryList) {
-    names.push(gallery.getGalleryName)
+    names.push(gallery.galleryName)
   }
   return names;
 
@@ -42,71 +42,16 @@ function createGalleryListFromMap() {
   console.log(galleryListFromMap)
 }
 
-//ends functions for full list
-
-
-// these three functions    /   takes row index 0
-function createGalleryName(galleryName) {
-  return {
-  galleryName: galleryName,
-  }
-}
-
-function createGalleryNameFromLoop(galleryNameRows) {
-  const galleryName = [];
-  for (let row of galleryNameRows.slice(1)) {
-    const name = createGalleryName(row[0])
-    galleryName.push(name)
-  }
-  return galleryName;
-}
-// end of the three functions for galleryName
-
-// only galleries from specific neighborhood
-
-function createGalleryNameNeighborhood(galleryName, neighborhood) {
-  return {
-    galleryName: galleryName,
-    location: {
-      neighborhood: neighborhood,
+function filterA(galleryList) {
+  const aOnly = [];
+  for (let gallery of galleryList) {
+    if (gallery.galleryName.indexOf('A') === 0 && gallery.location.neighborhood === 'Lower East Side') {
+      aOnly.push(gallery)
     }
   }
+  return aOnly;
 }
 
-function createGalleryNameNeighborhoodRow(row) {
-  return createGalleryNameNeighborhood(row[0], row[2])
-}
-
-function createNameNeighborhoodLoop(nameNeighborhoodrow) {
-  const galleryNameNeigborhoodrow = [];
-  for (let row of nameNeighborhoodrow.slice(1)) {
-    const nameNeighborhood = createGalleryNameNeighborhoodRow(row)
-    galleryNameNeigborhoodrow.push(nameNeighborhood)
-  }
-  return galleryNameNeigborhoodrow;
-}
-
-function createCityNeighborhood(city, neighborhood) {
-  return {
-    locationg: {
-      city: city,
-      neighborhood: neighborhood,
-    }
-  }
-}
-
-function createCityNeighborhoodRow(row) {
-  return createCityNeighborhood(row[1], row[2])
-}
-
-function createCityNeighborhoodLoop(cityNeighborhoodRow) {
-  const cityNeighborhood = [];
-  for (let row of cityNeighborhoodRow.slice(1)) {
-    const cityNeighbor = createCityNeighborhoodRow(row)
-    cityNeighborhood.push(cityNeighbor)
-  }
-  return cityNeighborhood;
-}
 
 const fs = require('fs')
 var parse = require('csv-parse')
@@ -118,14 +63,16 @@ fs.readFile(inputPath, function (err, fileData) {
     // Your CSV data is in an array of arrys passed to this callback as rows.
     //console.log('rows', rows);
 
-    galleryList = createGalleryListFromLoop(rows);
+    const galleryList = createGalleryListFromLoop(rows);
+    console.log(galleryList.slice(0, 144));
     //console.log('galleryList', galleryList);
     //galleryName = createGalleryNameFromLoop(rows);
     //console.log('galleryName', galleryName);
+    const aOnly = filterA(galleryList);
 
 
-    const names = getGalleryName(galleryList);
-    console.log(names);
+    // const names = getGalleryName(aOnly);
+    // console.log(names);
     // pass galleryList to function that will pass it into mongo db
   })
 })
