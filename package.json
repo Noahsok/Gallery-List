@@ -1,22 +1,25 @@
 {
-  "name": "gallery-list",
+  "name": "gallery_list",
   "version": "1.0.0",
-  "description": "",
+  "description": "\"\"",
   "main": "index.js",
+  "dependencies": {
+    "csv": "1.1.1",
+    "express": "4.15.4"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
-    "url": "gallery-list"
+    "url": "git+https://github.com/Noahsok/Gallery-List.git"
   },
   "author": "Noah Sokoloff <noahsokoloffinfo@gmail.com> (http://noahsokoloffstudio.com/)",
   "license": "ISC",
-  "devDependencies": {
-    "grunt": "1.0.1"
+  "bugs": {
+    "url": "https://github.com/Noahsok/Gallery-List/issues"
   },
-  "dependencies": {
-    "csv": "^1.1.1"
-  },
-
+  "homepage": "https://github.com/Noahsok/Gallery-List#readme"
 }

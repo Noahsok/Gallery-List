@@ -52,6 +52,23 @@ function filterA(galleryList) {
   return aOnly;
 }
 
+function fullList(galleryList) {
+  const slices = []; // empty array with slices of list
+  // [[1,2,3], [4,5,6]]
+  for (var i = 0; i <= Math.ceil(galleryList.length / 40); i++) {
+    // .length is a property of the array meaning in this context it is an integer
+    let startIndex = i * 40
+    let endingIndex = (i + 1) * 40
+    if (endingIndex > galleryList.length) {
+      endingIndex = galleryList.length
+    }
+    let slice = galleryList.slice(startIndex, endingIndex)
+
+    slices.push(slice);
+  }
+  return slices
+}
+
 
 const fs = require('fs')
 var parse = require('csv-parse')
@@ -64,15 +81,18 @@ fs.readFile(inputPath, function (err, fileData) {
     //console.log('rows', rows);
 
     const galleryList = createGalleryListFromLoop(rows);
-    console.log(galleryList.slice(0, 144));
+
+
+  //  console.log(galleryList.slice(0, 144));
     //console.log('galleryList', galleryList);
     //galleryName = createGalleryNameFromLoop(rows);
     //console.log('galleryName', galleryName);
     const aOnly = filterA(galleryList);
-
-
     // const names = getGalleryName(aOnly);
     // console.log(names);
     // pass galleryList to function that will pass it into mongo db
+
+    const slices = fullList(galleryList);
+    console.log(slices);
   })
 })
