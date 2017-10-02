@@ -69,6 +69,20 @@ function fullList(galleryList) {
   return slices
 }
 
+const MongoClient = require('mongodb').MongoClient;
+
+var ObjectId = require('mongodb').ObjectID;
+
+function galleryListToMongo(galleryList) {
+  MongoClient.connect('mongodb://Nohsokoloff:noah2385@ds147884.mlab.com:47884/gallery_list', function(err, db) {
+    var col = db.collection('galleryList');
+    col.insertMany(galleryList, function(err, r) {
+      db.close();
+    })
+  })
+};
+
+
 
 const fs = require('fs')
 var parse = require('csv-parse')
@@ -81,18 +95,19 @@ fs.readFile(inputPath, function (err, fileData) {
     //console.log('rows', rows);
 
     const galleryList = createGalleryListFromLoop(rows);
+    galleryListToMongo(galleryList);
 
 
   //  console.log(galleryList.slice(0, 144));
     //console.log('galleryList', galleryList);
     //galleryName = createGalleryNameFromLoop(rows);
     //console.log('galleryName', galleryName);
-    const aOnly = filterA(galleryList);
+    //const aOnly = filterA(galleryList);
     // const names = getGalleryName(aOnly);
     // console.log(names);
     // pass galleryList to function that will pass it into mongo db
 
     const slices = fullList(galleryList);
-    console.log(slices);
+
   })
 })
