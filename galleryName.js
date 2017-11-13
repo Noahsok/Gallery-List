@@ -44,15 +44,6 @@ function createGalleryListFromMap() {
   console.log(galleryListFromMap)
 }
 
-function filterA(galleryList) {
-  const aOnly = [];
-  for (let gallery of galleryList) {
-    if (gallery.galleryName.indexOf('A') === 0 && gallery.location.neighborhood === 'Lower East Side') {
-      aOnly.push(gallery)
-    }
-  }
-  return aOnly;
-}
 
 
 const fs = require('fs')

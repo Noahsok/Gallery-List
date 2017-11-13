@@ -33,6 +33,16 @@ csv.generate({seed: 1, columns: 2, length: 20}, function(err, data){
 // add records to the database
 
 
+on page load:
+1. function to get unique cities from mongo
+2. create options of cities for the city select element
+3. function to get unique neighborhoods for selected city from mongodb
+  3a. eventlistener that responds to city select element
+4. create options of neighborhood for the neighborhood select element
+5. eventlistener that responds to neighborhood select element
+6. function to get galleries from selected cities and selected neighborhoods from mongodb
+  6a. create options of galleries from mongodb gallery object for galleries select element 
+
 
 
 
@@ -208,3 +218,7 @@ fs.readFile(inputPath, function (err, fileData) {
     console.log('galleryList', galleryList)
   })
 })
+
+
+
+// 

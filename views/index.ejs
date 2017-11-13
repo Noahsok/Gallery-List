@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Gallery List</title>
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+</head>
+<body>
+  <label for="cities">Cities</label>
+  <select id="cities">
+    <option value="no_cities">--Pick Cities--</option>
+    <% for (var i = 0; i < cities.length; i++) {%>
+    <option><%= cities[i] %></option>
+    <% } %>
+
+    </select>
+    <label for="neighbors">Neighborhoods</label>
+    <select id="neighborhoods">
+          
+    </select>
+    
+    
+    <div id="galleryInfo">
+      
+      <h5></h5>
+      <!-- <h6></h6> --> 
+      
+    </div>
+
+    <div id="allGalInfo">
+
+      <h5></h5>
+
+    </div>
+
+    
+
+  
+    
+
+
+  <script src="main.js"></script>
+  
+</body>
+</html>
